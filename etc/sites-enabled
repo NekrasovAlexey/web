@@ -1,0 +1,17 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	server_name _;
+
+	location ^~ /uploads/ {
+		root	/home/box/web/uploads;
+	}
+	location ~* ^.+\..+$ {
+		alias /home/box/web/public;
+	}
+
+	location / {
+		return 404;
+	}
+}
